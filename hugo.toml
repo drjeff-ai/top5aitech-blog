@@ -1,0 +1,27 @@
+baseURL = "https://example.github.io/blog"
+languageCode = "en-us"
+title = "Statistic Machines"
+theme = "PaperMod"
+
+[params]
+  description = "AI and automation insights for growing businesses."
+  author = "Statistic Machines"
+  showReadingTime = true
+  showShareButtons = true
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showToc = true
+
+[params.homeInfoParams]
+  Title = "Statistic Machines"
+  Content = "AI and automation insights for growing businesses."
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
