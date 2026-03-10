@@ -1,20 +1,91 @@
-baseURL = "https://example.github.io/blog"
+baseURL = "https://top5aitech.com/"
 languageCode = "en-us"
-title = "Statistic Machines"
+title = "Top 5 AI Tech"
 theme = "PaperMod"
+paginate = 10
 
 [params]
-  description = "AI and automation insights for growing businesses."
-  author = "Statistic Machines"
-  showReadingTime = true
-  showShareButtons = true
-  showPostNavLinks = true
-  showBreadCrumbs = true
-  showToc = true
+  env = "production"
+  description = "AI insights, tools, and automation strategies for modern businesses."
+  author = "Top 5 AI Tech"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  images = ["/images/default-social.png"]
 
-[params.homeInfoParams]
-  Title = "Statistic Machines"
-  Content = "AI and automation insights for growing businesses."
+  [params.homeInfoParams]
+    Title = "Top 5 AI Tech"
+    Content = "AI insights, tools, and automation strategies for modern businesses. Practical guides to help you work smarter."
+
+  [[params.socialIcons]]
+    name = "website"
+    url = "https://top5aitech.com"
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/YOUR_USERNAME"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/company/YOUR_COMPANY"
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/YOUR_HANDLE"
+
+  [params.cover]
+    linkFullImages = true
+    responsiveImages = true
+
+  [params.assets]
+    favicon = "/favicon.ico"
+    apple_touch_icon = "/apple-touch-icon.png"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "archive"
+  name = "Archive"
+  url = "/archive/"
+  weight = 40
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 50
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 60
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

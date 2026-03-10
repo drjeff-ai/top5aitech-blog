@@ -1,0 +1,142 @@
+/* ============================================================
+   Top 5 AI Tech — Custom PaperMod Enhancements
+   Enhances spacing, typography, and visual polish without
+   overriding PaperMod's light/dark color scheme.
+   ============================================================ */
+
+/* --- Layout & Reading Width --- */
+.post-content,
+.post-header,
+.post-footer {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Typography --- */
+body {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.post-content p {
+    margin-bottom: 1.4em;
+}
+
+/* --- Headings --- */
+.post-content h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border);
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+.post-content h3 {
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+}
+
+/* --- Code Blocks --- */
+.post-content pre {
+    border-radius: 8px;
+    padding: 1.2em;
+}
+
+.post-content code {
+    border-radius: 4px;
+    padding: 0.15em 0.4em;
+}
+
+/* --- Images --- */
+.post-content img {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Featured / cover image */
+.entry-cover img,
+.post-content > p:first-of-type img {
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Blockquotes --- */
+.post-content blockquote {
+    border-left: 4px solid var(--primary);
+    background: var(--code-bg);
+    padding: 1em 1.4em;
+    margin: 1.6em 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.post-content blockquote p {
+    margin-bottom: 0.4em;
+}
+
+.post-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Links --- */
+.post-content a {
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* --- Lists --- */
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.4em;
+}
+
+.post-content li {
+    margin-bottom: 0.4em;
+}
+
+/* --- CTA Blocks --- */
+.post-content blockquote strong a,
+.post-content > div[style],
+.post-content hr + blockquote,
+.post-content blockquote:last-of-type {
+    /* Targets CTA-style blockquotes at end of posts */
+}
+
+/* Styled CTA card — wraps CTA content in a distinct block */
+.post-content > blockquote:last-of-type {
+    background: var(--code-bg);
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 1.6em 2em;
+    text-align: center;
+    margin: 2.5em 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.post-content > blockquote:last-of-type p {
+    margin-bottom: 0.6em;
+}
+
+.post-content > blockquote:last-of-type a {
+    font-weight: 600;
+}
+
+/* --- Table of Contents --- */
+.toc {
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+/* --- Post meta / reading time --- */
+.post-meta {
+    margin-bottom: 1.2em;
+}
+
+/* --- Tags --- */
+.post-tags a {
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+/* --- Smooth scrolling --- */
+html {
+    scroll-behavior: smooth;
+}
