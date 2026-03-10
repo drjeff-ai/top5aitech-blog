@@ -2,7 +2,8 @@ baseURL = "https://top5aitech.com/"
 languageCode = "en-us"
 title = "Top 5 AI Tech"
 theme = "PaperMod"
-paginate = 10
+[pagination]
+  pagerSize = 10
 
 [params]
   env = "production"
