@@ -35,6 +35,27 @@ theme = "PaperMod"
     name = "x"
     url = "https://x.com/YOUR_HANDLE"
 
+  [params.variables]
+    # Light mode
+    [params.variables.light]
+      primary = "#2563eb"
+      secondary = "#1e40af"
+      theme = "#fafaf9"
+      entry = "#ffffff"
+      content = "#1c1917"
+      border = "#e7e5e4"
+      code-bg = "#f5f5f4"
+
+    # Dark mode
+    [params.variables.dark]
+      primary = "#38bdf8"
+      secondary = "#7dd3fc"
+      theme = "#0f172a"
+      entry = "#1e293b"
+      content = "#e2e8f0"
+      border = "#334155"
+      code-bg = "#1e293b"
+
   [params.cover]
     linkFullImages = true
     responsiveImages = true

@@ -1,8 +1,49 @@
 /* ============================================================
-   Top 5 AI Tech — Custom PaperMod Enhancements
-   Enhances spacing, typography, and visual polish without
-   overriding PaperMod's light/dark color scheme.
+   Top 5 AI Tech — Custom PaperMod Theme
+   Color scheme, typography, and visual polish.
    ============================================================ */
+
+/* --- Color Variables --- */
+:root {
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: rgba(37, 99, 235, 0.08);
+    --accent-border: rgba(37, 99, 235, 0.3);
+}
+
+.dark {
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --accent-light: rgba(56, 189, 248, 0.1);
+    --accent-border: rgba(56, 189, 248, 0.3);
+}
+
+/* --- Top Accent Bar --- */
+body::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    z-index: 9999;
+}
+
+/* --- Header / Nav --- */
+.nav {
+    background: linear-gradient(180deg, var(--accent-light), transparent);
+    padding-top: 12px;
+}
+
+.nav .logo a {
+    font-weight: 800;
+}
+
+#menu a:hover {
+    color: var(--accent) !important;
+}
 
 /* --- Layout & Reading Width --- */
 .post-content,
@@ -36,6 +77,34 @@ body {
     margin-bottom: 0.6em;
 }
 
+/* --- Homepage Title & Tagline --- */
+.first-entry .home-info .entry-hint-about {
+    color: var(--accent);
+}
+
+.home-info .entry-heading {
+    color: var(--accent);
+}
+
+/* --- Homepage Post Links --- */
+.post-entry .entry-title {
+    transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-title {
+    color: var(--accent);
+}
+
+/* --- Links --- */
+.post-content a {
+    color: var(--accent);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.post-content a:hover {
+    color: var(--accent-hover);
+}
+
 /* --- Code Blocks --- */
 .post-content pre {
     border-radius: 8px;
@@ -53,17 +122,16 @@ body {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Featured / cover image */
 .entry-cover img,
 .post-content > p:first-of-type img {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Blockquotes --- */
+/* --- Blockquotes (regular) --- */
 .post-content blockquote {
-    border-left: 4px solid var(--primary);
-    background: var(--code-bg);
+    border-left: 4px solid var(--accent);
+    background: var(--accent-light);
     padding: 1em 1.4em;
     margin: 1.6em 0;
     border-radius: 0 8px 8px 0;
@@ -77,9 +145,94 @@ body {
     margin-bottom: 0;
 }
 
-/* --- Links --- */
-.post-content a {
-    transition: color 0.2s ease, border-color 0.2s ease;
+/* --- Mid-Post CTA Blockquote --- */
+.post-content blockquote:not(:last-of-type) a[href*="consultation"],
+.post-content blockquote:not(:last-of-type) a[href*="contact"],
+.post-content blockquote:not(:last-of-type) a[href*="call"] {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 0.5em 1.4em;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.post-content blockquote:not(:last-of-type) a[href*="consultation"]:hover,
+.post-content blockquote:not(:last-of-type) a[href*="contact"]:hover,
+.post-content blockquote:not(:last-of-type) a[href*="call"]:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* --- End CTA Card --- */
+.post-content > blockquote:last-of-type {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 1.8em 2em;
+    text-align: center;
+    margin: 2.5em 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.post-content > blockquote:last-of-type p {
+    margin-bottom: 0.6em;
+}
+
+/* CTA button styling — "Book Your Free Call" etc. */
+.post-content > blockquote:last-of-type a,
+.post-content a[href*="consultation"],
+.post-content a[href*="free-call"],
+.post-content a[href*="book"] {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 0.6em 1.8em;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05em;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.post-content > blockquote:last-of-type a:hover,
+.post-content a[href*="consultation"]:hover,
+.post-content a[href*="free-call"]:hover,
+.post-content a[href*="book"]:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+}
+
+.dark .post-content > blockquote:last-of-type a,
+.dark .post-content a[href*="consultation"] {
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+}
+
+.dark .post-content > blockquote:last-of-type a:hover,
+.dark .post-content a[href*="consultation"]:hover {
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+}
+
+/* --- Tags --- */
+.post-tags a,
+.terms-tags a {
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    border-radius: 20px;
+    padding: 0.25em 0.9em;
+    transition: background 0.2s ease, color 0.2s ease;
+    font-size: 0.9em;
+}
+
+.post-tags a:hover,
+.terms-tags a:hover {
+    background: var(--accent);
+    color: #ffffff !important;
+    border-color: var(--accent);
 }
 
 /* --- Lists --- */
@@ -92,51 +245,34 @@ body {
     margin-bottom: 0.4em;
 }
 
-/* --- CTA Blocks --- */
-.post-content blockquote strong a,
-.post-content > div[style],
-.post-content hr + blockquote,
-.post-content blockquote:last-of-type {
-    /* Targets CTA-style blockquotes at end of posts */
-}
-
-/* Styled CTA card — wraps CTA content in a distinct block */
-.post-content > blockquote:last-of-type {
-    background: var(--code-bg);
-    border-left: 4px solid var(--primary);
-    border-radius: 10px;
-    padding: 1.6em 2em;
-    text-align: center;
-    margin: 2.5em 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.post-content > blockquote:last-of-type p {
-    margin-bottom: 0.6em;
-}
-
-.post-content > blockquote:last-of-type a {
-    font-weight: 600;
-}
-
 /* --- Table of Contents --- */
 .toc {
     border-radius: 8px;
     margin-bottom: 2em;
 }
 
-/* --- Post meta / reading time --- */
+/* --- Post Meta --- */
 .post-meta {
     margin-bottom: 1.2em;
 }
 
-/* --- Tags --- */
-.post-tags a {
-    border-radius: 4px;
-    transition: background 0.2s ease;
+/* --- Footer --- */
+.footer {
+    border-top: 2px solid var(--accent-border);
+    padding-top: 1.2em;
 }
 
-/* --- Smooth scrolling --- */
+/* --- Social Icons --- */
+.social-icons a {
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-2px);
+    color: var(--accent);
+}
+
+/* --- Smooth Scrolling --- */
 html {
     scroll-behavior: smooth;
 }
