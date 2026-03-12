@@ -2,6 +2,7 @@ baseURL = "https://top5aitech.com/"
 languageCode = "en-us"
 title = "Top 5 AI Tech"
 theme = "PaperMod"
+
 [pagination]
   pagerSize = 10
 
@@ -20,41 +21,20 @@ theme = "PaperMod"
 
   [params.homeInfoParams]
     Title = "Top 5 AI Tech"
-    Content = "AI insights, tools, and automation strategies for modern businesses. Practical guides to help you work smarter."
+    Content = "AI insights, tools, and automation strategies for modern businesses.<br>Practical guides to help you work smarter."
 
   [[params.socialIcons]]
     name = "website"
     url = "https://top5aitech.com"
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/YOUR_USERNAME"
+    url = "https://github.com/drjeff-ai"
   [[params.socialIcons]]
     name = "linkedin"
     url = "https://linkedin.com/company/YOUR_COMPANY"
   [[params.socialIcons]]
     name = "x"
     url = "https://x.com/YOUR_HANDLE"
-
-  [params.variables]
-    # Light mode
-    [params.variables.light]
-      primary = "#2563eb"
-      secondary = "#1e40af"
-      theme = "#fafaf9"
-      entry = "#ffffff"
-      content = "#1c1917"
-      border = "#e7e5e4"
-      code-bg = "#f5f5f4"
-
-    # Dark mode
-    [params.variables.dark]
-      primary = "#38bdf8"
-      secondary = "#7dd3fc"
-      theme = "#0f172a"
-      entry = "#1e293b"
-      content = "#e2e8f0"
-      border = "#334155"
-      code-bg = "#1e293b"
 
   [params.cover]
     linkFullImages = true
@@ -114,7 +94,9 @@ theme = "PaperMod"
 
 [markup]
   [markup.highlight]
-    style = "monokai"
+    style = "dracula"
+    lineNos = false
+    guessSyntax = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

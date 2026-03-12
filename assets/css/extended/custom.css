@@ -1,278 +1,468 @@
-/* ============================================================
-   Top 5 AI Tech — Custom PaperMod Theme
-   Color scheme, typography, and visual polish.
-   ============================================================ */
+/* ==========================================================================
+   Top 5 AI Tech — PaperMod Custom Theme
+   Editorial-modern aesthetic. Clean, sharp, confident.
+   ========================================================================== */
 
-/* --- Color Variables --- */
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ==========================================================================
+   Color Scheme — Light Mode
+   Warm whites, deep ink text, electric blue accent
+   ========================================================================== */
 :root {
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-light: rgba(37, 99, 235, 0.08);
-    --accent-border: rgba(37, 99, 235, 0.3);
+    --primary: #1d4ed8;
+    --secondary: #3b82f6;
+    --theme: #fafaf9;
+    --entry: #ffffff;
+    --content: #1c1917;
+    --border: #e5e5e4;
+    --code-bg: #f5f5f4;
+    --accent: #1d4ed8;
+    --accent-light: #dbeafe;
+    --accent-hover: #1e40af;
+    --text-muted: #78716c;
+    --gap: 24px;
 }
 
-.dark {
-    --accent: #38bdf8;
-    --accent-hover: #7dd3fc;
-    --accent-light: rgba(56, 189, 248, 0.1);
-    --accent-border: rgba(56, 189, 248, 0.3);
+/* ==========================================================================
+   Color Scheme — Dark Mode
+   Deep navy, cool greys, bright sky accent
+   ========================================================================== */
+[data-theme="dark"] {
+    --primary: #60a5fa;
+    --secondary: #93c5fd;
+    --theme: #0c1222;
+    --entry: #141d2f;
+    --content: #e2e8f0;
+    --border: #1e2d4a;
+    --code-bg: #141d2f;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --accent-hover: #93c5fd;
+    --text-muted: #94a3b8;
 }
 
-/* --- Top Accent Bar --- */
+/* ==========================================================================
+   Top Accent Bar
+   ========================================================================== */
 body::before {
     content: "";
     display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--secondary), var(--accent));
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
     z-index: 9999;
 }
 
-/* --- Header / Nav --- */
-.nav {
-    background: linear-gradient(180deg, var(--accent-light), transparent);
-    padding-top: 12px;
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.nav .logo a {
-    font-weight: 800;
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.entry-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-#menu a:hover {
-    color: var(--accent) !important;
+code, pre, .highlight {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.88em;
 }
 
-/* --- Layout & Reading Width --- */
+/* ==========================================================================
+   Layout — Content Width
+   ========================================================================== */
 .post-content,
 .post-header,
 .post-footer {
-    max-width: 750px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* --- Typography --- */
-body {
-    font-size: 18px;
-    line-height: 1.8;
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.nav {
+    padding-top: 14px;
 }
 
-.post-content p {
-    margin-bottom: 1.4em;
-}
-
-/* --- Headings --- */
-.post-content h2 {
-    padding-bottom: 0.3em;
-    border-bottom: 1px solid var(--border);
-    margin-top: 2em;
-    margin-bottom: 0.8em;
-}
-
-.post-content h3 {
-    margin-top: 1.6em;
-    margin-bottom: 0.6em;
-}
-
-/* --- Homepage Title & Tagline --- */
-.first-entry .home-info .entry-hint-about {
-    color: var(--accent);
-}
-
-.home-info .entry-heading {
-    color: var(--accent);
-}
-
-/* --- Homepage Post Links --- */
-.post-entry .entry-title {
+#menu a {
+    font-weight: 500;
+    font-size: 0.92em;
+    letter-spacing: 0.01em;
     transition: color 0.2s ease;
 }
 
-.post-entry:hover .entry-title {
+#menu a:hover,
+#menu .active {
+    color: var(--accent) !important;
+}
+
+/* ==========================================================================
+   Homepage
+   ========================================================================== */
+.first-entry .entry-header h1,
+.home-info .entry-hint-about {
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.home-info .entry-hint-about + div {
+    font-size: 1.05em;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Social icons on homepage */
+.social-icons a {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Post List (Homepage & Archive)
+   ========================================================================== */
+.post-entry {
+    border-radius: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.post-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .post-entry:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.post-entry .entry-header h2 {
+    font-size: 1.2em;
+    transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-header h2 {
     color: var(--accent);
 }
 
-/* --- Links --- */
+/* Post meta text */
+.post-entry .post-meta,
+.post-meta {
+    color: var(--text-muted);
+    font-size: 0.88em;
+}
+
+/* ==========================================================================
+   Post Content — Body
+   ========================================================================== */
+.post-content p {
+    margin-bottom: 1.3em;
+}
+
+.post-content h2 {
+    margin-top: 2.2em;
+    margin-bottom: 0.7em;
+    padding-bottom: 0.35em;
+    border-bottom: 2px solid var(--accent-light);
+    font-size: 1.45em;
+}
+
+[data-theme="dark"] .post-content h2 {
+    border-bottom-color: var(--accent-light);
+}
+
+.post-content h3 {
+    margin-top: 1.8em;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
 .post-content a {
     color: var(--accent);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .post-content a:hover {
     color: var(--accent-hover);
+    text-decoration-thickness: 2px;
 }
 
-/* --- Code Blocks --- */
-.post-content pre {
-    border-radius: 8px;
-    padding: 1.2em;
-}
-
-.post-content code {
-    border-radius: 4px;
-    padding: 0.15em 0.4em;
-}
-
-/* --- Images --- */
+/* ==========================================================================
+   Images
+   ========================================================================== */
 .post-content img {
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    margin: 1em 0;
 }
 
-.entry-cover img,
-.post-content > p:first-of-type img {
+.entry-cover img {
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Blockquotes (regular) --- */
+[data-theme="dark"] .post-content img,
+[data-theme="dark"] .entry-cover img {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   Code Blocks
+   ========================================================================== */
+.post-content pre {
+    border-radius: 8px;
+    padding: 1.2em 1.4em;
+    border: 1px solid var(--border);
+}
+
+.post-content code:not(pre code) {
+    border-radius: 4px;
+    padding: 0.15em 0.45em;
+    background: var(--code-bg);
+    font-size: 0.88em;
+}
+
+/* ==========================================================================
+   Blockquotes
+   ========================================================================== */
 .post-content blockquote {
-    border-left: 4px solid var(--accent);
+    border-left: 3px solid var(--accent);
     background: var(--accent-light);
     padding: 1em 1.4em;
-    margin: 1.6em 0;
+    margin: 1.5em 0;
     border-radius: 0 8px 8px 0;
+    font-style: normal;
+}
+
+[data-theme="dark"] .post-content blockquote {
+    background: var(--accent-light);
 }
 
 .post-content blockquote p {
-    margin-bottom: 0.4em;
+    margin-bottom: 0.3em;
 }
 
 .post-content blockquote p:last-child {
     margin-bottom: 0;
 }
 
-/* --- Mid-Post CTA Blockquote --- */
-.post-content blockquote:not(:last-of-type) a[href*="consultation"],
-.post-content blockquote:not(:last-of-type) a[href*="contact"],
-.post-content blockquote:not(:last-of-type) a[href*="call"] {
-    display: inline-block;
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 0.5em 1.4em;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.2s ease, transform 0.15s ease;
-}
+/* ==========================================================================
+   CTA Blocks — Mid-post and End-post
+   Targets the blockquote CTAs the generator inserts
+   ========================================================================== */
 
-.post-content blockquote:not(:last-of-type) a[href*="consultation"]:hover,
-.post-content blockquote:not(:last-of-type) a[href*="contact"]:hover,
-.post-content blockquote:not(:last-of-type) a[href*="call"]:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-}
-
-/* --- End CTA Card --- */
-.post-content > blockquote:last-of-type {
-    background: var(--accent-light);
-    border-left: 4px solid var(--accent);
-    border-radius: 10px;
-    padding: 1.8em 2em;
-    text-align: center;
-    margin: 2.5em 0;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.post-content > blockquote:last-of-type p {
-    margin-bottom: 0.6em;
-}
-
-/* CTA button styling — "Book Your Free Call" etc. */
-.post-content > blockquote:last-of-type a,
-.post-content a[href*="consultation"],
-.post-content a[href*="free-call"],
-.post-content a[href*="book"] {
-    display: inline-block;
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 0.6em 1.8em;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.05em;
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-}
-
-.post-content > blockquote:last-of-type a:hover,
-.post-content a[href*="consultation"]:hover,
-.post-content a[href*="free-call"]:hover,
-.post-content a[href*="book"]:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
-}
-
-.dark .post-content > blockquote:last-of-type a,
-.dark .post-content a[href*="consultation"] {
-    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
-}
-
-.dark .post-content > blockquote:last-of-type a:hover,
-.dark .post-content a[href*="consultation"]:hover {
-    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
-}
-
-/* --- Tags --- */
-.post-tags a,
-.terms-tags a {
-    background: var(--accent-light);
-    border: 1px solid var(--accent-border);
-    border-radius: 20px;
-    padding: 0.25em 0.9em;
-    transition: background 0.2s ease, color 0.2s ease;
-    font-size: 0.9em;
-}
-
-.post-tags a:hover,
-.terms-tags a:hover {
-    background: var(--accent);
-    color: #ffffff !important;
-    border-color: var(--accent);
-}
-
-/* --- Lists --- */
-.post-content ul,
-.post-content ol {
-    margin-bottom: 1.4em;
-}
-
-.post-content li {
-    margin-bottom: 0.4em;
-}
-
-/* --- Table of Contents --- */
-.toc {
-    border-radius: 8px;
-    margin-bottom: 2em;
-}
-
-/* --- Post Meta --- */
-.post-meta {
-    margin-bottom: 1.2em;
-}
-
-/* --- Footer --- */
-.footer {
-    border-top: 2px solid var(--accent-border);
-    padding-top: 1.2em;
-}
-
-/* --- Social Icons --- */
-.social-icons a {
-    transition: transform 0.2s ease;
-}
-
-.social-icons a:hover {
-    transform: translateY(-2px);
+/* Mid-post CTA */
+.post-content blockquote strong {
     color: var(--accent);
 }
 
-/* --- Smooth Scrolling --- */
+/* End CTA — the last HR + content block */
+.post-content > hr:last-of-type {
+    border: none;
+    margin: 2.5em 0 0;
+}
+
+.post-content > hr:nth-last-of-type(2) {
+    border: none;
+    margin: 0;
+}
+
+/* CTA button styling — any link inside a blockquote that looks like a CTA */
+.post-content blockquote a[href*="consultation"],
+.post-content blockquote a[href*="call"],
+.post-content a[href*="consultation"],
+.post-content p > a:only-child[href*="Book"],
+.post-content a[href*="Book"] {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 10px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95em;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
+    margin-top: 0.5em;
+}
+
+.post-content blockquote a[href*="consultation"]:hover,
+.post-content blockquote a[href*="call"]:hover,
+.post-content a[href*="consultation"]:hover,
+.post-content a[href*="Book"]:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+    text-decoration: none;
+}
+
+[data-theme="dark"] .post-content blockquote a[href*="consultation"],
+[data-theme="dark"] .post-content blockquote a[href*="call"],
+[data-theme="dark"] .post-content a[href*="Book"] {
+    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.3em;
+    padding-left: 1.4em;
+}
+
+.post-content li {
+    margin-bottom: 0.35em;
+}
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.post-tags a {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-size: 0.82em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.post-tags a:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .post-tags a {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+[data-theme="dark"] .post-tags a:hover {
+    background: var(--accent);
+    color: #0c1222;
+}
+
+/* ==========================================================================
+   Table of Contents
+   ========================================================================== */
+.toc {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.8em 1.2em;
+    margin-bottom: 2em;
+    background: var(--entry);
+}
+
+.toc summary {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Post Navigation (Prev/Next)
+   ========================================================================== */
+.paginav a {
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+}
+
+.paginav a:hover {
+    border-color: var(--accent);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    border-top: 2px solid var(--accent-light);
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   Scroll & Selection
+   ========================================================================== */
 html {
     scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--accent-light);
+    color: var(--content);
+}
+
+[data-theme="dark"] ::selection {
+    background: var(--accent-light);
+    color: var(--content);
+}
+
+/* ==========================================================================
+   Share Buttons
+   ========================================================================== */
+.share-buttons a {
+    border-radius: 6px;
+    transition: transform 0.15s ease;
+}
+
+.share-buttons a:hover {
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Reading Progress (subtle top bar on scroll)
+   Pure CSS version using scroll-timeline if supported
+   ========================================================================== */
+@supports (animation-timeline: scroll()) {
+    body::after {
+        content: "";
+        position: fixed;
+        top: 3px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: var(--accent);
+        transform-origin: left;
+        scale: 0 1;
+        z-index: 9998;
+        animation: grow-progress linear;
+        animation-timeline: scroll();
+    }
+
+    @keyframes grow-progress {
+        from { scale: 0 1; }
+        to { scale: 1 1; }
+    }
 }
