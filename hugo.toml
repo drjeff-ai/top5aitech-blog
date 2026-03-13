@@ -39,6 +39,9 @@ theme = "PaperMod"
   [params.cover]
     linkFullImages = true
     responsiveImages = true
+    hidden = false
+    hiddenInList = false
+    hiddenInSingle = false
 
   [params.assets]
     favicon = "/favicon.ico"
