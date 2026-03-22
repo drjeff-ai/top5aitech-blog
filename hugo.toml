@@ -1,4 +1,4 @@
-baseURL = "https://top5aitech.com/"
+baseURL = "https://topfiveaitech.com/"
 languageCode = "en-us"
 title = "Top 5 AI Tech"
 theme = "PaperMod"
@@ -25,7 +25,7 @@ theme = "PaperMod"
 
   [[params.socialIcons]]
     name = "website"
-    url = "https://top5aitech.com"
+    url = "https://topfiveaitech.com/"
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/drjeff-ai"
