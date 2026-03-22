@@ -1,65 +1,69 @@
 /* ==========================================================================
-   Top 5 AI Tech — PaperMod Custom Theme
-   Editorial-modern aesthetic. Clean, sharp, confident.
+   Top Five AI Tech — Dark Tech Theme
+   Built on PaperMod. Dark-first, sky-blue accent, editorial tech aesthetic.
    ========================================================================== */
 
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap');
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ==========================================================================
-   Color Scheme — Light Mode
-   Warm whites, deep ink text, electric blue accent
+   Dark Mode Colors (Primary)
    ========================================================================== */
 :root {
-    --primary: #1d4ed8;
-    --secondary: #3b82f6;
-    --theme: #fafaf9;
-    --entry: #ffffff;
-    --content: #1c1917;
-    --border: #e5e5e4;
-    --code-bg: #f5f5f4;
-    --accent: #1d4ed8;
-    --accent-light: #dbeafe;
-    --accent-hover: #1e40af;
-    --text-muted: #78716c;
+    --theme: #080c19;
+    --entry: #141d2f;
+    --primary: #38bdf8;
+    --secondary: #818cf8;
+    --content: #cbd5e1;
+    --hljs-bg: #141d2f;
+    --code-bg: #141d2f;
+    --border: rgba(56, 189, 248, 0.08);
+    --tertiary: rgba(56, 189, 248, 0.08);
+
+    /* Custom vars */
+    --accent: #38bdf8;
+    --accent-secondary: #818cf8;
+    --accent-hover: #7dd3fc;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --accent-subtle: rgba(56, 189, 248, 0.04);
+    --heading: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-dim: #475569;
+    --card-hover-border: rgba(56, 189, 248, 0.25);
+    --card-hover-bg: rgba(56, 189, 248, 0.03);
+    --card-shadow: 0 8px 32px rgba(56, 189, 248, 0.08);
     --gap: 24px;
 }
 
 /* ==========================================================================
-   Color Scheme — Dark Mode
-   Deep navy, cool greys, bright sky accent
+   Light Mode Colors (Secondary — clean and readable)
    ========================================================================== */
-[data-theme="dark"] {
-    --primary: #60a5fa;
-    --secondary: #93c5fd;
-    --theme: #0c1222;
-    --entry: #141d2f;
-    --content: #e2e8f0;
-    --border: #1e2d4a;
-    --code-bg: #141d2f;
-    --accent: #60a5fa;
-    --accent-light: #1e3a5f;
-    --accent-hover: #93c5fd;
-    --text-muted: #94a3b8;
+[data-theme="light"] {
+    --theme: #f8fafc;
+    --entry: #ffffff;
+    --primary: #1d4ed8;
+    --secondary: #6366f1;
+    --content: #334155;
+    --hljs-bg: #f1f5f9;
+    --code-bg: #f1f5f9;
+    --border: #e2e8f0;
+    --tertiary: #f1f5f9;
+
+    --accent: #1d4ed8;
+    --accent-secondary: #6366f1;
+    --accent-hover: #1e40af;
+    --accent-glow: rgba(29, 78, 216, 0.1);
+    --accent-subtle: rgba(29, 78, 216, 0.03);
+    --heading: #0f172a;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    --card-hover-border: rgba(29, 78, 216, 0.2);
+    --card-hover-bg: rgba(29, 78, 216, 0.02);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 /* ==========================================================================
-   Top Accent Bar
-   ========================================================================== */
-body::before {
-    content: "";
-    display: block;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--secondary), var(--accent));
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-}
-
-/* ==========================================================================
-   Typography
+   Base & Background
    ========================================================================== */
 body {
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -67,23 +71,212 @@ body {
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--theme);
 }
 
-h1, h2, h3, h4, h5, h6,
-.post-title,
-.entry-header h2 {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+/* Subtle grid pattern */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
 }
 
-code, pre, .highlight {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    font-size: 0.88em;
+[data-theme="light"] body::after {
+    background-image:
+        linear-gradient(rgba(29, 78, 216, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 78, 216, 0.015) 1px, transparent 1px);
+}
+
+/* Top accent gradient bar */
+body::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent));
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* ==========================================================================
-   Layout — Content Width
+   Typography
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.entry-header h2,
+.first-entry .entry-header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--heading);
+}
+
+code, pre, .highlight,
+.post-meta,
+.post-tags a,
+.breadcrumbs,
+.paginav,
+.footer {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.nav {
+    backdrop-filter: blur(20px);
+    background: rgba(8, 12, 25, 0.85) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] .nav {
+    background: rgba(248, 250, 252, 0.9) !important;
+}
+
+/* Logo text styling */
+.logo a {
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    letter-spacing: -0.01em;
+}
+
+#menu a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px !important;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+#menu a:hover,
+#menu .active {
+    color: var(--accent) !important;
+}
+
+/* Theme toggle */
+#theme-toggle {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+#theme-toggle:hover {
+    border-color: var(--card-hover-border);
+}
+
+/* ==========================================================================
+   Homepage — Hero / Home Info
+   ========================================================================== */
+.home-info {
+    padding: 60px 0 40px;
+}
+
+.home-info .entry-hint-about {
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em;
+    line-height: 1.1 !important;
+    color: var(--heading);
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary), #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-info .entry-hint-about + div,
+.home-info .entry-hint-about ~ div {
+    font-size: 17px !important;
+    color: var(--text-muted) !important;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+/* Social icons */
+.social-icons a {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent) !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Post List — Cards
+   ========================================================================== */
+.post-entry {
+    border-radius: 12px !important;
+    border: 1px solid var(--border) !important;
+    background: var(--entry);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.post-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
+    border-color: var(--card-hover-border) !important;
+    background: var(--card-hover-bg);
+}
+
+.post-entry .entry-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-header h2 {
+    color: var(--accent) !important;
+}
+
+.post-entry .entry-content {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.post-entry .post-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+/* Cover images in list */
+.post-entry .entry-cover img {
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.4s ease;
+}
+
+.post-entry:hover .entry-cover img {
+    transform: scale(1.03);
+}
+
+/* First/featured entry */
+.first-entry {
+    border-radius: 14px !important;
+    border: 1px solid var(--border) !important;
+}
+
+.first-entry:hover {
+    border-color: var(--card-hover-border) !important;
+    box-shadow: var(--card-shadow);
+}
+
+/* ==========================================================================
+   Post Content — Layout
    ========================================================================== */
 .post-content,
 .post-header,
@@ -94,113 +287,33 @@ code, pre, .highlight {
 }
 
 /* ==========================================================================
-   Header & Navigation
-   ========================================================================== */
-.nav {
-    padding-top: 14px;
-}
-
-#menu a {
-    font-weight: 500;
-    font-size: 0.92em;
-    letter-spacing: 0.01em;
-    transition: color 0.2s ease;
-}
-
-#menu a:hover,
-#menu .active {
-    color: var(--accent) !important;
-}
-
-/* ==========================================================================
-   Homepage
-   ========================================================================== */
-.first-entry .entry-header h1,
-.home-info .entry-hint-about {
-    font-size: 2.2em;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-}
-
-.home-info .entry-hint-about + div {
-    font-size: 1.05em;
-    color: var(--text-muted);
-    line-height: 1.7;
-}
-
-/* Social icons on homepage */
-.social-icons a {
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.social-icons a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   Post List (Homepage & Archive)
-   ========================================================================== */
-.post-entry {
-    border-radius: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    border: 1px solid var(--border);
-    margin-bottom: 12px;
-}
-
-.post-entry:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-}
-
-[data-theme="dark"] .post-entry:hover {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-}
-
-.post-entry .entry-header h2 {
-    font-size: 1.2em;
-    transition: color 0.2s ease;
-}
-
-.post-entry:hover .entry-header h2 {
-    color: var(--accent);
-}
-
-/* Post meta text */
-.post-entry .post-meta,
-.post-meta {
-    color: var(--text-muted);
-    font-size: 0.88em;
-}
-
-/* ==========================================================================
-   Post Content — Body
+   Post Content — Typography
    ========================================================================== */
 .post-content p {
     margin-bottom: 1.3em;
+    color: var(--content);
+}
+
+.post-content strong {
+    color: var(--heading);
 }
 
 .post-content h2 {
-    margin-top: 2.2em;
+    font-size: 24px;
+    margin-top: 2.4em;
     margin-bottom: 0.7em;
     padding-bottom: 0.35em;
-    border-bottom: 2px solid var(--accent-light);
-    font-size: 1.45em;
-}
-
-[data-theme="dark"] .post-content h2 {
-    border-bottom-color: var(--accent-light);
+    border-bottom: 2px solid var(--accent-glow);
 }
 
 .post-content h3 {
+    font-size: 19px;
     margin-top: 1.8em;
     margin-bottom: 0.5em;
-    font-size: 1.2em;
 }
 
 /* ==========================================================================
-   Links
+   Post Content — Links
    ========================================================================== */
 .post-content a {
     color: var(--accent);
@@ -216,31 +329,35 @@ code, pre, .highlight {
 }
 
 /* ==========================================================================
-   Images
+   Post Content — Images
    ========================================================================== */
 .post-content img {
-    border-radius: 8px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-    margin: 1em 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    margin: 1.2em 0;
 }
 
-.entry-cover img {
-    border-radius: 10px;
+[data-theme="light"] .post-content img {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="dark"] .post-content img,
-[data-theme="dark"] .entry-cover img {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+.entry-cover img {
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .entry-cover img {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 /* ==========================================================================
-   Code Blocks
+   Post Content — Code
    ========================================================================== */
 .post-content pre {
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 1.2em 1.4em;
     border: 1px solid var(--border);
+    font-size: 14px;
 }
 
 .post-content code:not(pre code) {
@@ -248,22 +365,20 @@ code, pre, .highlight {
     padding: 0.15em 0.45em;
     background: var(--code-bg);
     font-size: 0.88em;
+    color: var(--accent);
 }
 
 /* ==========================================================================
-   Blockquotes
+   Post Content — Blockquotes
    ========================================================================== */
 .post-content blockquote {
     border-left: 3px solid var(--accent);
-    background: var(--accent-light);
+    background: var(--accent-subtle);
     padding: 1em 1.4em;
     margin: 1.5em 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 10px 10px 0;
     font-style: normal;
-}
-
-[data-theme="dark"] .post-content blockquote {
-    background: var(--accent-light);
+    color: var(--text-muted);
 }
 
 .post-content blockquote p {
@@ -274,60 +389,151 @@ code, pre, .highlight {
     margin-bottom: 0;
 }
 
-/* ==========================================================================
-   CTA Blocks — Mid-post and End-post
-   Targets the blockquote CTAs the generator inserts
-   ========================================================================== */
-
-/* Mid-post CTA */
 .post-content blockquote strong {
     color: var(--accent);
 }
 
-/* End CTA — the last HR + content block */
-.post-content > hr:last-of-type {
-    border: none;
-    margin: 2.5em 0 0;
+/* ==========================================================================
+   CTA Blocks
+   ========================================================================== */
+/* Mid-post and end-post CTA styling */
+.post-content > blockquote:last-of-type,
+.post-content blockquote:has(a[href*="consultation"]),
+.post-content blockquote:has(a[href*="Book"]) {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(129, 140, 248, 0.05));
+    border: 1px solid rgba(56, 189, 248, 0.12);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 24px 28px;
+    text-align: center;
+    margin: 2em 0;
 }
 
-.post-content > hr:nth-last-of-type(2) {
-    border: none;
-    margin: 0;
+[data-theme="light"] .post-content > blockquote:last-of-type,
+[data-theme="light"] .post-content blockquote:has(a[href*="consultation"]),
+[data-theme="light"] .post-content blockquote:has(a[href*="Book"]) {
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.03), rgba(99, 102, 241, 0.03));
+    border-color: rgba(29, 78, 216, 0.1);
 }
 
-/* CTA button styling — any link inside a blockquote that looks like a CTA */
-.post-content blockquote a[href*="consultation"],
-.post-content blockquote a[href*="call"],
+/* CTA buttons */
 .post-content a[href*="consultation"],
-.post-content p > a:only-child[href*="Book"],
-.post-content a[href*="Book"] {
+.post-content a[href*="Book"],
+.post-content a[href*="book"],
+.post-content a[href*="call"] {
     display: inline-block;
-    background: var(--accent);
-    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    color: #0a0f1e !important;
     padding: 10px 28px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95em;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
-    margin-top: 0.5em;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none !important;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 20px var(--accent-glow);
+    margin-top: 8px;
 }
 
-.post-content blockquote a[href*="consultation"]:hover,
-.post-content blockquote a[href*="call"]:hover,
 .post-content a[href*="consultation"]:hover,
-.post-content a[href*="Book"]:hover {
-    background: var(--accent-hover);
+.post-content a[href*="Book"]:hover,
+.post-content a[href*="book"]:hover,
+.post-content a[href*="call"]:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
-    text-decoration: none;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    text-decoration: none !important;
 }
 
-[data-theme="dark"] .post-content blockquote a[href*="consultation"],
-[data-theme="dark"] .post-content blockquote a[href*="call"],
-[data-theme="dark"] .post-content a[href*="Book"] {
-    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+[data-theme="light"] .post-content a[href*="consultation"],
+[data-theme="light"] .post-content a[href*="Book"],
+[data-theme="light"] .post-content a[href*="book"],
+[data-theme="light"] .post-content a[href*="call"] {
+    color: #ffffff !important;
+}
+
+/* The HR separators around end CTA — hide them */
+.post-content > hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5em 0;
+}
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.post-tags a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px !important;
+    font-weight: 600;
+    color: var(--accent) !important;
+    background: var(--accent-subtle);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 12px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+}
+
+.post-tags a:hover {
+    background: var(--accent) !important;
+    color: #0a0f1e !important;
+    border-color: var(--accent);
+}
+
+[data-theme="light"] .post-tags a:hover {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Table of Contents
+   ========================================================================== */
+.toc {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 2em;
+    background: var(--entry);
+}
+
+.toc summary {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.toc a {
+    color: var(--accent) !important;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.toc a:hover {
+    color: var(--accent-hover) !important;
+}
+
+/* ==========================================================================
+   Post Navigation (Prev / Next)
+   ========================================================================== */
+.paginav a {
+    border-radius: 10px !important;
+    border: 1px solid var(--border) !important;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+    font-size: 13px;
+}
+
+.paginav a:hover {
+    border-color: var(--card-hover-border) !important;
+    transform: translateY(-1px);
+}
+
+.paginav .title {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -344,116 +550,88 @@ code, pre, .highlight {
 }
 
 /* ==========================================================================
-   Tags
+   Share Buttons
    ========================================================================== */
-.post-tags a {
-    background: var(--accent-light);
-    color: var(--accent);
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 4px 12px;
-    font-size: 0.82em;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.post-tags a:hover {
-    background: var(--accent);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .post-tags a {
-    background: var(--accent-light);
-    color: var(--accent);
-}
-
-[data-theme="dark"] .post-tags a:hover {
-    background: var(--accent);
-    color: #0c1222;
-}
-
-/* ==========================================================================
-   Table of Contents
-   ========================================================================== */
-.toc {
-    border: 1px solid var(--border);
+.share-buttons a {
     border-radius: 8px;
-    padding: 0.8em 1.2em;
-    margin-bottom: 2em;
-    background: var(--entry);
+    transition: transform 0.15s ease, color 0.2s ease;
 }
 
-.toc summary {
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* ==========================================================================
-   Post Navigation (Prev/Next)
-   ========================================================================== */
-.paginav a {
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    transition: border-color 0.2s ease;
-}
-
-.paginav a:hover {
-    border-color: var(--accent);
+.share-buttons a:hover {
+    transform: translateY(-1px);
+    color: var(--accent);
 }
 
 /* ==========================================================================
    Footer
    ========================================================================== */
 footer {
-    border-top: 2px solid var(--accent-light);
+    border-top: 1px solid var(--border) !important;
 }
 
-footer a:hover {
+.footer a {
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: var(--accent) !important;
+}
+
+/* ==========================================================================
+   Breadcrumbs
+   ========================================================================== */
+.breadcrumbs {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
     color: var(--accent);
 }
 
 /* ==========================================================================
-   Scroll & Selection
+   Search
    ========================================================================== */
-html {
-    scroll-behavior: smooth;
+#searchbox input {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--entry);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s;
 }
 
+#searchbox input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ==========================================================================
+   Selection
+   ========================================================================== */
 ::selection {
-    background: var(--accent-light);
-    color: var(--content);
-}
-
-[data-theme="dark"] ::selection {
-    background: var(--accent-light);
-    color: var(--content);
+    background: var(--accent-glow);
+    color: var(--heading);
 }
 
 /* ==========================================================================
-   Share Buttons
-   ========================================================================== */
-.share-buttons a {
-    border-radius: 6px;
-    transition: transform 0.15s ease;
-}
-
-.share-buttons a:hover {
-    transform: translateY(-1px);
-}
-
-/* ==========================================================================
-   Reading Progress (subtle top bar on scroll)
-   Pure CSS version using scroll-timeline if supported
+   Scroll Progress Bar
    ========================================================================== */
 @supports (animation-timeline: scroll()) {
-    body::after {
+    .post-content::before {
         content: "";
         position: fixed;
         top: 3px;
         left: 0;
         height: 2px;
         width: 100%;
-        background: var(--accent);
+        background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
         transform-origin: left;
         scale: 0 1;
         z-index: 9998;
@@ -464,5 +642,51 @@ html {
     @keyframes grow-progress {
         from { scale: 0 1; }
         to { scale: 1 1; }
+    }
+}
+
+/* ==========================================================================
+   Post Meta
+   ========================================================================== */
+.post-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+/* ==========================================================================
+   Archive Page
+   ========================================================================== */
+.archive-month {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.archive-entry .entry-link {
+    transition: color 0.2s;
+}
+
+.archive-entry:hover .entry-link {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   Mobile Responsive Tweaks
+   ========================================================================== */
+@media (max-width: 768px) {
+    .home-info .entry-hint-about {
+        font-size: 28px !important;
+    }
+
+    .post-content h2 {
+        font-size: 20px;
+    }
+
+    .post-content,
+    .post-header,
+    .post-footer {
+        max-width: 100%;
     }
 }

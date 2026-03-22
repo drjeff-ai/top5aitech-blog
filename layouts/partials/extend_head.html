@@ -1,0 +1,26 @@
+<!-- Preload fonts for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{ if .IsPage }}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description | default .Summary }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with .Params.cover.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+{{ else }}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ .Site.Params.description }}">
+{{ end }}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
+{{ with .Params.cover.image }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ .Permalink }}">

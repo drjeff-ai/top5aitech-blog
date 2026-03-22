@@ -1,7 +1,8 @@
 baseURL = "https://topfiveaitech.com/"
 languageCode = "en-us"
-title = "Top 5 AI Tech"
+title = "Top Five AI Tech"
 theme = "PaperMod"
+enableRobotsTXT = true
 
 [pagination]
   pagerSize = 10
@@ -9,23 +10,20 @@ theme = "PaperMod"
 [params]
   env = "production"
   description = "AI insights, tools, and automation strategies for modern businesses."
-  author = "Top 5 AI Tech"
-  defaultTheme = "auto"
+  author = "Top Five AI Tech"
+  defaultTheme = "dark"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
-  ShowBreadCrumbs = true
+  ShowBreadCrumbs = false
   ShowCodeCopyButtons = true
   ShowToc = true
   images = ["/images/default-social.png"]
 
   [params.homeInfoParams]
-    Title = "Top 5 AI Tech"
-    Content = "AI insights, tools, and automation strategies for modern businesses.<br>Practical guides to help you work smarter."
+    Title = "Practical AI for modern business"
+    Content = "No jargon, no hype — just actionable guides to help you automate the boring stuff and focus on growth."
 
-  [[params.socialIcons]]
-    name = "website"
-    url = "https://topfiveaitech.com/"
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/drjeff-ai"
@@ -35,13 +33,16 @@ theme = "PaperMod"
   [[params.socialIcons]]
     name = "x"
     url = "https://x.com/YOUR_HANDLE"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
 
   [params.cover]
-    linkFullImages = true
-    responsiveImages = true
     hidden = false
     hiddenInList = false
     hiddenInSingle = false
+    linkFullImages = true
+    responsiveImages = true
 
   [params.assets]
     favicon = "/favicon.ico"
@@ -56,44 +57,46 @@ theme = "PaperMod"
     minMatchCharLength = 0
     keys = ["title", "permalink", "summary", "content"]
 
-[[menu.main]]
-  identifier = "home"
-  name = "Home"
-  url = "/"
-  weight = 10
+  [params.label]
+    text = "topfiveaitech"
 
 [[menu.main]]
   identifier = "posts"
   name = "Posts"
   url = "/posts/"
-  weight = 20
+  weight = 10
 
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
   url = "/tags/"
-  weight = 30
+  weight = 20
 
 [[menu.main]]
   identifier = "archive"
   name = "Archive"
   url = "/archive/"
-  weight = 40
+  weight = 30
 
 [[menu.main]]
   identifier = "search"
   name = "Search"
   url = "/search/"
-  weight = 50
+  weight = 40
 
 [[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about/"
-  weight = 60
+  weight = 50
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [markup]
   [markup.highlight]
